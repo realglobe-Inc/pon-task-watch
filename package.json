@@ -1,6 +1,6 @@
 {
   "name": "pon-task-watch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pon task to watch files",
   "main": "lib",
   "browser": "shim/browser",
