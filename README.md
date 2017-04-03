@@ -112,6 +112,7 @@ Define task
 | handler | function |  Change handler function |
 | options | Object |  Optional settings |
 | options.delay | number |  Delay to trigger watch |
+| options.events | string |  Target events |
 
 
 
