@@ -2,13 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-# TODO OSS
-# - npm i npm-cli-login -g
-# - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
-# - npm who
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
+ - npm i npm-cli-login -g
+ - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
+ - npm who
 install:
 - npm install jsdoc -g
 - npm install
@@ -19,6 +15,4 @@ script:
 after_success:
 - ./ci/travis/publish.js
 env:
-  secure: "G0AdisPnQdR55q/WZLrZVclwret0fXMRgIyz5+JjeWf2miZH01CbK4fpPtH7SKlOI1yG94OYi32hgarZv+lT/PUR2Y5k85JT94TRKEcyUKJSlnzEn4uf5knAU6EomQ/6yNnuMSta4Lkl/dK8+j39FPkOexrQfYu1U6Y9hRufMzGhh3LkaSIIWFUmD61dLaSaKAIy89xxrV/V0nh8l4YTVHzpynW0ZGIp0qeX+kd54c//jCb0bw60/pQjUWawm3U6d1Ky94Yy50isYG4sixGi2osbM76/aVBvsaaNdGOL0De4aiAw1BJ8QLmMbGjzBa3Q901QnuGXV4O2OWi7j2t1jlnsHBaYZR9rSAKh/0eCacSEdZkNGrIqHh43VnZtGdnSoF3JFrlW3WeCS/XnCtsLRVLzz/92/IzTzF05wePo+4oU1qylPa9MSq1rM5EYOB9aKYKgm3AcQ25jLPCy76vEE5+4c2ddXEAylhHDGG48x3F8U9Bl3THcI/46tkY7K2OzoiwM6TKS95ZjtyWzCuT6lwBPXGyTpIDL301qiRyQo8kFsW1dCgNESDahr8b39ZiICe/gJivLe7XrMGmqFqdgZO8ORouyMhEIe6wwHswE+dZnoc+HTgjNfZ+vNZimgEa7xqjT/CxiWRyP2xVUR0Gy9huwXluIShWh8hKUYlKgOD8="
-env:
-  secure: "fyZrU5YE3PMrJBXtMIuVSwr0dQs5m7iTdNTG5fZJp3nLU2BOpTN7VJc6x0+/ru0YH+9dV4TXH/ZekZUWr9lh5R5N5lqY3W+h1XcStnij9Mxwk6lMMW3EN1LwVg/+BGtLH+J1mQe2JqP/RssjfSIVglwPCigpd8ti1HWL7r8Umz398HSwKuhiDUvycoVTPlcZWqZ4RBCC6mg9R7JboEnznVuJQD+SVPFeKhd6n0onBvhnpKo+274U7sksZirek8i7KUgv4WhWe8tbYmNlGNR5QnKenbKLVNx+TqaIrP5KfVzgJ0h9DODXxyd66kKLmrhzATp9i/TcA6Zxvv5RUkN1niH1R4uk+MsX/xroK6kuNRZrK3ujPBK/8RY3D44JxGiXjQ/KfuiXX62EmQNEFbPhSgRYnGKCaq3iIjif7g5SBx3dZpCgI1hJ8I6HROdyf7PdKYo4FFqsYWbHlZuy1fqOHmbHlKIECXBRiqPevOGngqBvZV12pZDq4UD5+2z9676zq7YjfKj1EFEqG6TlG53M453beq55Wv1nfKJwmrJ2fNY8iEejSkcMerXcuKpNdoGQLbueS+Er35kds21OEAQGDE+gEjtQdhpCvf8W8OJz7w7UE6kkY8YMoKUHUBzBrvWM3VqBKBfIjHAQ+MW8hu7vMkvKtwnkw8InnIwUs86xfjo="
+  secure: "mDSDikWs9pyYlYY7RBmrdTXkpI14f4x+K+HnZ5JGtclwkP47MMWmsj20wnEfb2+LcF7X12wCQI280crCTHYAUego2IHOoE214VT5vTeuu+y9OO5JNsTyhq+Xo2juy+lSYJsBajhi3XjGfjM+GuMQ6ncPZx6TH6dpAxhWv3q0DO/A0i2jscxcGRIOMeFeQVPN8rpXAqVSOGpuJbhIPNeAETjUhn/vnok/nvb/Zw21hWnFtshYu6iqoNzJLBgLbTz//OskZqiS0KUFY46GDlmi3pXGyj8ZOnwvlP+VYdyyx1rHm6NpW4CF5inUBFOoqXOo2622o7K5YNZ4jJKHkQpz4eyzT1EMtlI4cK6UcQQtLv5v9MHbEtFPEoP+ASISv+PpmTjDBNJiwgCk3Y+nbRLhB55Gyg8YNW6GHneruEIVCYhyXV49I54kS20gA1Vr+FgqDPkwl/cZR/Xpn0B0hEyzZ4FKQIjrDuHAaF8OFfDkxczHs0qhS/O4oJXMCp5gCbvgAQ4OfyNJQqFXiyacbQ2C7Z5jcbnATpPDFIuTeuEB+oVkwy5TtI6L6DPJ/0BzIn2lQ99TmIXHRcOc9aWA1uFpz6XyB8t+2uVPy4mpdum/d9v0pToTpEH1p1oXmcvC0i7vq6a4echxYQNCtVVqjmU+tbGVnpRplgv/Onoq34Xg0Mg="
