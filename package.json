@@ -23,8 +23,7 @@
   },
   "homepage": "https://github.com/realglobe-Inc/pon-task-watch#readme",
   "dependencies": {
-    "asleep": "^1.0.3",
-    "co": "^4.6.0"
+    "asleep": "^1.0.3"
   },
   "devDependencies": {
     "ababel": "^2.0.2",
