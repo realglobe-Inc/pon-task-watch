@@ -6,7 +6,7 @@
 
 const define = require('../lib/define.js')
 const ponContext = require('pon-context')
-const {ok} = require('assert')
+const {equal} = require('assert')
 const path = require('path')
 const asleep = require('asleep')
 const writeout = require('writeout')
@@ -30,8 +30,10 @@ describe('define', function () {
     require.cache[path.resolve(srcDir, src)] = {m: 'This is mock cache'}
     await writeout(src, ':root { --red: #d33; } a { &:hover { color: color(var(--red) a(54%)); } }', {mkdirp: true})
     await asleep(100)
+    let received = []
     const task = define(srcDir + '/*.*', (event, filename) => {
       writeout(destDir + '/' + filename, 'hogehoge', {mkdirp: true})
+      received.push([event, filename])
     }, {delay: 1})
     const close = await task(ctx)
     await writeout(src, ':root { --red: #dd1; } a { &:hover { color: color(var(--red) a(54%)); } }', {mkdirp: true})
@@ -40,6 +42,8 @@ describe('define', function () {
     await asleep(200)
 
     close()
+
+    equal(received.length, 2)
   })
 })
 
